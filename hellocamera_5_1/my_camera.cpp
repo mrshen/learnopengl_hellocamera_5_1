@@ -55,4 +55,7 @@ void MyCamera::updateCamDirection(float pitch, float yaw)
 	camDir.x = cos(glm::radians(pitch)) * cos(glm::radians(yaw));
 	camDir.z = cos(glm::radians(pitch)) * sin(glm::radians(yaw));
 	this->camDirection = glm::normalize(camDir);
+
+	this->camRight = glm::normalize(glm::cross(this->worldUp, this->camDirection));
+	this->camUp = glm::normalize(glm::cross(this->camDirection, this->camRight));
 }
